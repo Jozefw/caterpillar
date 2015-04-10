@@ -28,13 +28,13 @@ function snakeTail(){
 }
 
 function snakeMove() {
-	// define the snake head
+	// define the snake head, placement of the snakes head will point to the direction of movement
 	var head = snake[0];
-	// the direction of mivement is going to be either into a row or a column so we need to break the head up into these component parts
+	// the direction of movement is going to be either into a row or a column so we need to break the head up into these component parts
 	var headParts = head.split("_");
 	var headRow = parseInt( headParts[0] );
 	var headColumn = parseInt( headParts[1] );
-// the snake is controlled by the heds movement into either a row or column which will be made by the arrow keypress;
+// the snake is controlled by the heads movement into either a row or column which will be made by the arrow keypress;
 	switch(direction){
 		
 	}
