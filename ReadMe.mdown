@@ -1,0 +1,59 @@
+$( function() {
+
+var game = function() {
+    var startNewGame = function() {
+        board.init(); // setup the board
+        snake.init(); // get the snake ready
+    },
+    
+    mainLoop = function() {
+        while ( ) { 
+          // get last keypress, and
+          // if its a different direction than snakes direction
+            // redirect snake
+          // else ...
+          // move snake
+          // check for collisions (with food, wall, self)
+            // if collision, then end game (or grow snake, or...)
+          // decide if you want to place food on the board, and do it
+        }
+    };
+    
+    startNewGame();
+    mainLoop(); // go into the main game loop
+    
+    return {
+        startNew : startNew,
+        
+    };
+}();        
+
+
+var snake = function() {
+        var length = 3;
+              
+        var move = function() { },
+        
+              grow = function() {
+                  
+             };
+    
+    return {
+       move : move,   // the value here refers to the method above
+       // no grow() in the interface
+    };
+};
+
+
+var board = function() {
+    var boardSize = 20,
+          snakeCoords = [],  // array of arrays (or objects)
+          foodPosition = []; // array with just 2 things (x and y coords)
+          
+    var init = function() {
+        //clear the old board and then reset a new board
+        // fill snakeCoords with x,y pairs representing initial position of snake
+        };
+};
+
+});  // end of the doc ready
