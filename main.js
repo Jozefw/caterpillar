@@ -1,7 +1,7 @@
 // clears the board
 $('#container').html("");
 var food = "";
-var tail= ""
+var tail= [];
 // make rows and coloumns for the board
 for ( var row = 0; row < 20; row++ ) {
 	for ( var column = 0; column < 20; column++ ) {
@@ -20,6 +20,7 @@ for ( var row = 0; row < 20; row++ ) {
 	var appleRow = Math.floor(Math.random() *19 );
 	var appleColumn = Math.floor(Math.random()* 19 );
 	$('#columns_'+appleRow+'_'+appleColumn).addClass('appleCell');
+	food = row+"_"+column;
 })();
 
 function snakeTail(){
@@ -60,5 +61,8 @@ function snakeMove() {
 
 // if snake direction is on food grow the tail
 if ( newSnakeDir === food ) {
-	snake.push(tail)
+	snake.push(tail);
+	$('columns_'+tail).addClass('snakeCell');
+	$('columns_'+food).removeClass('appleCell');
+	generateFood();
 } 
