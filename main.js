@@ -29,13 +29,29 @@ function snakeTail(){
 
 function snakeMove() {
 	// define the snake head, placement of the snakes head will point to the direction of movement
-	var head = snake[0];
+	var head = snake[0],
 	// the direction of movement is going to be either into a row or a column so we need to break the head up into these component parts
-	var headParts = head.split("_");
-	var headRow = parseInt( headParts[0] );
-	var headColumn = parseInt( headParts[1] );
+		 headParts = head.split("_"),
+		 headRow = parseInt( headParts[0] ),
+		 headColumn = parseInt( headParts[1] ),
+		 direction;
 // the snake is controlled by the heads movement into either a row or column which will be made by the arrow keypress;
 	switch(direction){
-		
+		case 1: 
+			row = row + 1 //row increases so this is down position
+			break;
+		case 2:
+			column = column - 1 //move to the left	
+			break;
+		case 3:
+			row = row - 1 //mov to top
+			break;
+		case 4:
+			column = column + 1 // move to right
+			break;
+
 	}
+	// snake direction IS the placement of a new cell in front of the head in the desired direction from the keypress above 
+	var newSnakeDir = row+"_"+column;
+	snake.unshift(newSnakeDir);
 }
