@@ -1,5 +1,7 @@
 // clears the board
 $('#container').html("");
+var food = "";
+var tail= ""
 // make rows and coloumns for the board
 for ( var row = 0; row < 20; row++ ) {
 	for ( var column = 0; column < 20; column++ ) {
@@ -55,3 +57,8 @@ function snakeMove() {
 	var newSnakeDir = row+"_"+column;
 	snake.unshift(newSnakeDir);
 }
+
+// if snake direction is on food grow the tail
+if ( newSnakeDir === food ) {
+	snake.push(tail)
+} 
