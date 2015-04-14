@@ -63,6 +63,22 @@ function snakeMove() {
 if ( newSnakeDir === food ) {
 	snake.push(tail);
 	$('columns_'+tail).addClass('snakeCell');
+	// remove the apple
 	$('columns_'+food).removeClass('appleCell');
 	generateFood();
 } 
+
+$(document).keypress(function(event) {
+	if( event.keyCode === 37 ) {
+		direction = 2;
+	}
+	else if ( event.keyCode === 38 ) {
+		direction = 3;
+	}
+	else if ( event.keycode === 39 ) {
+		direction = 4; 
+	}
+	else if ( event.keyCode === 40 ) {
+		direction = 1;
+	}
+});
