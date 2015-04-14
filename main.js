@@ -68,6 +68,7 @@ if ( newSnakeDir === food ) {
 	generateFood();
 } 
 
+// identify which keypress and asign a direction to it
 $(document).keypress(function(event) {
 	if( event.keyCode === 37 ) {
 		direction = 2;
@@ -82,3 +83,7 @@ $(document).keypress(function(event) {
 		direction = 1;
 	}
 });
+
+// allow the snake to move with regular periodicity
+setTimeout( function(){gameUpdate()}, speed)
+})
