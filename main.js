@@ -25,7 +25,6 @@
 	setTimeout( function(){ gameUpdate}, speed );
 })();
 
-
 function generateFood() {
 	var appleRow = Math.floor(Math.random() *19 );
 	var appleColumn = Math.floor(Math.random()* 19 );
