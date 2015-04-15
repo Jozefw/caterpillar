@@ -40,7 +40,7 @@ function generateFood() {
 
 function gameUpdate() {
 	var tail = snake.pop();
-	$('#columns_'+tail).removeClass('appleCell');
+	$('#columns_'+tail).removeClass('snakeCell');
 
 	// define the snake head, placement of the snakes head will point to the direction of movement
 	var head = snake[0],
@@ -64,11 +64,9 @@ function gameUpdate() {
 			headColumn = headColumn + 1; // move to right
 			break;
 }
-
-
 	// snake direction IS the placement of a new cell in front of the head in the desired direction from the keypress above 
-	var newSnakeDir = headRow + "_" + headColumn;
-	snake.unshift(newSnakeDir);
+	var newSnakeDir ="" + headRow + "_" + headColumn;
+	
 
 	// if snake direction is on food grow the tail
 	if ( newSnakeDir === food ) {
@@ -78,14 +76,23 @@ function gameUpdate() {
 		$('#columns_'+food).removeClass('appleCell');
 		generateFood();
 	}
+
 	snake.unshift(newSnakeDir);
-	$('')
+	// $('#columns_' + newSnakeDir).hasClass('snakeCell');
+	if ( headColumn<0 || headRow<0 || headColumn>19 || headRow>19 || $('#columns_' + newSnakeDir).hasClass('snakeCell') ) {
+		alert("You Lost!");
+		return;
+	}
+	$('#columns_' + newSnakeDir).addClass('snakeCell');
+	// allow the snake to move with regular periodicity
+	setTimeout(function(){gameUpdate();}, speed);
+
 }
 
 
-
 // identify which keypress and asign a direction to it
-$(document).keypress(function(event) {
+$(document).keydown(function(event) {
+	console.log(event);
 	if( event.keyCode === 37 ) {
 		direction = 2;
 	}
@@ -100,7 +107,6 @@ $(document).keypress(function(event) {
 	}
 });
 
-// allow the snake to move with regular periodicity
-setTimeout(function(){gameUpdate();}, speed);
+
 
 
