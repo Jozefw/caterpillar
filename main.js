@@ -47,7 +47,9 @@ function gameUpdate() {
 	// the direction of movement is going to be either into a row or a column so we need to break the head up into these component parts
 	headParts = head.split("_"),
 	headRow = parseInt(headParts[0]),
+	// console.log(headRow);
 	headColumn = parseInt(headParts[1]);
+	// console.log(headColumn);
 		 
 // the snake is controlled by the heads movement into either a row or column which will be made by the arrow keypress;
 	switch(direction){
@@ -81,6 +83,7 @@ function gameUpdate() {
 	// $('#columns_' + newSnakeDir).hasClass('snakeCell');
 	if ( headColumn<0 || headRow<0 || headColumn>19 || headRow>19 || $('#columns_' + newSnakeDir).hasClass('snakeCell') ) {
 		alert("You Lost!");
+		init();
 		return;
 	}
 	$('#columns_' + newSnakeDir).addClass('snakeCell');
@@ -88,7 +91,6 @@ function gameUpdate() {
 	setTimeout(function(){gameUpdate();}, speed);
 
 }
-
 
 // identify which keypress and asign a direction to it
 $(document).keydown(function(event) {
