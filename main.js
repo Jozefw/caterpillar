@@ -1,11 +1,13 @@
-(function init() {
-	// clears the board
+var food = "",
+		direction = 1,
+		snake = ["3_10", "2_10","1_10"],
+		speed = 500,
+		tail= [];
+
+function init() {
+	
+// clears the board
 	$('#container').html("");
-	var food = "",
-			direction = 1,
-			food = "",
-			snake = ["3_10", "2_10","1_10"],
-			tail= [];
 
 // make rows and coloumns for the board
 	for ( var row = 0; row < 20; row++ ) {
@@ -22,15 +24,19 @@
 	// put some food on the board
 	generateFood();
 // run gameUpdate to get the snake moving
-	setTimeout( function(){ gameUpdate}, speed );
-})();
+	setTimeout(function(){
+		gameUpdate();
+	}, speed );
+}
+
+init();
 
 function generateFood() {
 	var appleRow = Math.floor(Math.random() *19 );
 	var appleColumn = Math.floor(Math.random()* 19 );
 	$('#columns_'+appleRow+'_'+appleColumn).addClass('appleCell');
-	food = row+"_"+column;
-};
+	food = appleRow + "_" + appleColumn;
+}
 
 function gameUpdate() {
 	var tail = snake.pop();
@@ -39,40 +45,44 @@ function gameUpdate() {
 	// define the snake head, placement of the snakes head will point to the direction of movement
 	var head = snake[0],
 	// the direction of movement is going to be either into a row or a column so we need to break the head up into these component parts
-		 headParts = head.split("_"),
-		 headRow = parseInt( headParts[0] ),
-		 headColumn = parseInt( headParts[1] ),
-		 direction;
+	headParts = head.split("_"),
+	headRow = parseInt(headParts[0]),
+	headColumn = parseInt(headParts[1]);
+		 
 // the snake is controlled by the heads movement into either a row or column which will be made by the arrow keypress;
 	switch(direction){
-		case 1: 
-			row = row + 1 //row increases so this is down position
+		case 1:
+			headRow = headRow + 1; //row increases so this is down position
 			break;
 		case 2:
-			column = column - 1 //move to the left	
+			headColumn = headColumn - 1; //move to the left	
 			break;
 		case 3:
-			row = row - 1 //mov to top
+			headRow = headRow - 1; //mov to top
 			break;
 		case 4:
-			column = column + 1 // move to right
+			headColumn = headColumn + 1; // move to right
 			break;
 }
 
 
 	// snake direction IS the placement of a new cell in front of the head in the desired direction from the keypress above 
-	var newSnakeDir = row+"_"+column;
+	var newSnakeDir = headRow + "_" + headColumn;
 	snake.unshift(newSnakeDir);
+
+	// if snake direction is on food grow the tail
+	if ( newSnakeDir === food ) {
+		snake.push(tail);
+		$('#columns_'+tail).addClass('snakeCell');
+		// remove the apple
+		$('#columns_'+food).removeClass('appleCell');
+		generateFood();
+	}
+	snake.unshift(newSnakeDir);
+	$('')
 }
 
-// if snake direction is on food grow the tail
-if ( newSnakeDir === food ) {
-	snake.push(tail);
-	$('columns_'+tail).addClass('snakeCell');
-	// remove the apple
-	$('columns_'+food).removeClass('appleCell');
-	generateFood();
-} 
+
 
 // identify which keypress and asign a direction to it
 $(document).keypress(function(event) {
@@ -83,7 +93,7 @@ $(document).keypress(function(event) {
 		direction = 3;
 	}
 	else if ( event.keycode === 39 ) {
-		direction = 4; 
+		direction = 4;
 	}
 	else if ( event.keyCode === 40 ) {
 		direction = 1;
@@ -91,5 +101,6 @@ $(document).keypress(function(event) {
 });
 
 // allow the snake to move with regular periodicity
-setTimeout( function(){gameUpdate()}, speed)
-})
+setTimeout(function(){gameUpdate();}, speed);
+
+
