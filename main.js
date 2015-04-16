@@ -7,6 +7,7 @@ $(function(){
 			tail= [];
 
 	function init() {
+	
 		
 	// clears the board
 		$('#container').html("");
