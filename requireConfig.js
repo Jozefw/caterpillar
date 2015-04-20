@@ -8,8 +8,13 @@ require.config(
 
 	// these are the path links
 	paths: {
-		'jquery':'vendor/jquery-1.5.2',
+		'jquery':'http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min',
 
 	}
 
+
+});
+
+require(['js/app'], function(app){
+	app.init();
 });
