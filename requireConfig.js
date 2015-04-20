@@ -2,7 +2,7 @@
 //tell jshint there is a global variable named require
 // 'use strict';// jshint ignore:line
 
-// passing json argument to function as an argument
+// passing json argument to function as an argument, this is the configuration PATHS
 require.config(
 {
 
