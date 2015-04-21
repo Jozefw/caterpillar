@@ -2,25 +2,18 @@
 define(['jquery', 'js/keyboardEvent'
 
 	], function($, keyboardEvent) {
-		var food = "",
-		direction = 1,
-		snake = ["3_10", "2_10","1_10"],
-		speed = 200,
-		tail= [];
+		
 
 		var app = {
 			init: function() {
+				var food = "",
+				direction = 1,
+				snake = ["3_10", "2_10","1_10"],
+				speed = 200,
+				tail= [];
 				keyboardEvent.init(function(direction) {
 					alert("keyboard event fired " + direction );
 				});
-
-			}
-		};
-
-		//$(function(){
-
-
-			function init() {
 				tail= [];
 				direction = 1;
 				snake = ["3_10", "2_10","1_10"];
@@ -41,27 +34,28 @@ define(['jquery', 'js/keyboardEvent'
 				$('#columns_2_10').addClass('snakeCell');
 				$('#columns_3_10').addClass('snakeCell');
 
-		/*put some food on the board*/
-		generateFood();
-	/* run gameUpdate to get the snake moving*/
-	setTimeout(function(){
-		gameUpdate();
-	}, speed );
-}
+				/*put some food on the board*/
+				generateFood();
+				/* run gameUpdate to get the snake moving*/
+				setTimeout(function(){
+					gameUpdate();
+				}, speed );
+			}
+		};
 
 
-init();
+			app.init();
 
-function generateFood() {
-	var appleRow = Math.floor(Math.random() *19 );
-	var appleColumn = Math.floor(Math.random()* 19 );
-	$('#columns_'+appleRow+'_'+appleColumn).addClass('appleCell');
-	food = appleRow + "_" + appleColumn;
-}
+			function generateFood() {
+				var appleRow = Math.floor(Math.random() *19 );
+				var appleColumn = Math.floor(Math.random()* 19 );
+				$('#columns_'+appleRow+'_'+appleColumn).addClass('appleCell');
+				food = appleRow + "_" + appleColumn;
+			}
 
-function gameUpdate() {
-	var tail = snake.pop();
-	$('#columns_'+tail).removeClass('snakeCell');
+			function gameUpdate() {
+				var tail = snake.pop();
+				$('#columns_'+tail).removeClass('snakeCell');
 
 		// define the snake head, placement of the snakes head will point to the direction of movement
 		var head = snake[0],
