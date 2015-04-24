@@ -9,8 +9,8 @@ define(['jquery'], function($){
 	var keyboardEvent = {
 
 		init: function (callback) {
-				var self = this;
-				$(document).keydown(function(event) {
+			var self = this;
+			$(document).keydown(function(event) {
 				// console.log(event.keyCode);
 				if( event.keyCode === 37 ) {
 					self.direction = 2;

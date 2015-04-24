@@ -6,7 +6,7 @@
 }
 
 .boardCell {
-	background: #e74c3c;
+	background: transparent;
 	height: 20px;
 	width: 20px;
 	float: left;
@@ -17,6 +17,6 @@
 }
 
 .appleCell{
-	background-image: url('apple.png'); 
+	background-image: url('apple.png');
 	background-repeat: no-repeat;
 }

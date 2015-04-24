@@ -50,12 +50,12 @@ $(function(){
 
 		// define the snake head, placement of the snakes head will point to the direction of movement
 		var head = snake[0],
-		// the direction of movement is going to be either into a row or a column so we need to break the head up into these component parts
-		headParts = head.split("_"),
-		headRow = parseInt(headParts[0]),
-		// console.log(headRow);
-		headColumn = parseInt(headParts[1]);
-		// console.log(headColumn);
+			// the direction of movement is going to be either into a row or a column so we need to break the head up into these component parts
+			headParts = head.split("_"),
+			headRow = parseInt(headParts[0],10),
+			// console.log(headRow);
+			headColumn = parseInt(headParts[1],10);
+			// console.log(headColumn);
 			 
 	// the snake is controlled by the heads movement into either a row or column which will be made by the arrow keypress;
 		switch(direction){
